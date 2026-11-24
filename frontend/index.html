@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181332">
+  <meta name="description" content="Analiza mensajes y capturas en busca de señales de estafa.">
+  <title>PILAS · Prevención de estafas digitales</title>
+  <link rel="icon" href="/pilas.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M9 21v-7h6v7"/></symbol>
+    <symbol id="panel" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="scan" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3M8 12h8"/></symbol>
+    <symbol id="spark" viewBox="0 0 24 24"><path d="m12 2 2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2Zm7 14 1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z"/></symbol>
+    <symbol id="book" viewBox="0 0 24 24"><path d="M12 6a6 6 0 0 0-6-2H3v15h4a6 6 0 0 1 5 2 6 6 0 0 1 5-2h4V4h-3a6 6 0 0 0-6 2v15"/></symbol>
+    <symbol id="message" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.5-3.3A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 10h8m-8 4h5"/></symbol>
+    <symbol id="image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5-9 11"/></symbol>
+    <symbol id="lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4m-4 4v2"/></symbol>
+    <symbol id="alert" viewBox="0 0 24 24"><path d="M10.3 4.6 2.8 18a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 4.6a2 2 0 0 0-3.4 0ZM12 9v4m0 4h.01"/></symbol>
+    <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="upload" viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></symbol>
+  </svg>
+
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <aside class="sidebar">
+    <a class="brand" href="#inicio" aria-label="PILAS, inicio">
+      <span class="brand-mark"><svg><use href="#shield"/></svg></span>
+      <span>PILAS<small>Seguridad digital</small></span>
+    </a>
+    <nav class="navigation" aria-label="Principal">
+      <a href="#inicio" data-nav="inicio"><svg><use href="#home"/></svg>Inicio</a>
+      <a href="#panel" data-nav="panel"><svg><use href="#panel"/></svg>Panel</a>
+      <a href="#analizar" data-nav="analizar"><svg><use href="#scan"/></svg>Analizar</a>
+      <a href="#asistente" data-nav="asistente"><svg><use href="#spark"/></svg>Asistente</a>
+      <a href="#guias" data-nav="guias"><svg><use href="#book"/></svg>Guías</a>
+    </nav>
+    <div class="sidebar-note"><svg><use href="#lock"/></svg><span>PILAS procesa tus mensajes e imágenes sin guardarlos.</span></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <a class="mobile-brand" href="#inicio"><span class="brand-mark"><svg><use href="#shield"/></svg></span>PILAS</a>
+      <span id="page-name" class="page-name">Inicio</span>
+      <span id="connection" class="connection" role="status"><span></span><b>Conectando</b></span>
+    </header>
+
+    <main id="contenido" class="main" tabindex="-1">
+      <section data-page="inicio">
+        <div class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">PREVENCIÓN DE ESTAFAS DIGITALES</p>
+            <h1>Antes de confiar,<br><em>verifica con PILAS.</em></h1>
+            <p>Tu protección inteligente antes de confiar, pagar o transferir.</p>
+            <a class="button hero-button" href="#analizar"><svg><use href="#scan"/></svg>Analizar ahora</a>
+          </div>
+          <div class="hero-visual" aria-label="Ejemplo de un análisis con riesgo alto">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="preview-card">
+              <div class="preview-head"><span class="preview-icon"><svg><use href="#shield"/></svg></span><span>Resultado del análisis<small>Ejemplo ficticio</small></span></div>
+              <div class="preview-risk"><svg><use href="#alert"/></svg> Riesgo alto</div>
+              <div class="preview-indicator"><i></i><i></i><i></i></div>
+              <div class="preview-detail"><span></span><div><strong>Pago por adelantado</strong><small>Solicita dinero para liberar un premio.</small></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title"><h2>¿Qué quieres revisar?</h2></div>
+        <div class="action-grid">
+          <a class="action-card" href="#analizar/texto"><span class="tile-icon purple"><svg><use href="#message"/></svg></span><div><h3>Analizar un mensaje</h3><p>Revisa mensajes, ofertas y enlaces que te generen dudas.</p></div><span class="chevron" aria-hidden="true"></span></a>
+          <a class="action-card" href="#analizar/imagen"><span class="tile-icon blue"><svg><use href="#image"/></svg></span><div><h3>Analizar una imagen</h3><p>Detecta inconsistencias visibles en capturas o comprobantes.</p></div><span class="chevron" aria-hidden="true"></span></a>
+        </div>
+        <div class="tip-card"><span class="tile-icon mint"><svg><use href="#shield"/></svg></span><div><h3>Comprueba el abono antes de entregar</h3><p>Abre tu aplicación bancaria y revisa si el dinero llegó a tu cuenta.</p></div><a href="#guias">Ver guías</a></div>
+      </section>
+
+      <section data-page="panel" hidden>
+        <div class="page-heading"><div><h1>Tu panel</h1><p>Consulta los análisis realizados durante esta sesión.</p></div><a class="button" href="#analizar"><svg><use href="#scan"/></svg>Nuevo análisis</a></div>
+        <div class="stats-grid">
+          <article class="stat"><span class="tile-icon purple"><svg><use href="#scan"/></svg></span><b id="total-count">0</b><span>Análisis realizados</span></article>
+          <article class="stat"><span class="tile-icon rose"><svg><use href="#alert"/></svg></span><b id="high-count">0</b><span>Alertas de riesgo alto</span></article>
+          <article class="stat"><span class="tile-icon blue"><svg><use href="#clock"/></svg></span><b id="average-time">—</b><span>Tiempo promedio</span></article>
+        </div>
+        <div class="dashboard-grid">
+          <article class="surface"><h2>Distribución de riesgo</h2><div id="risk-distribution" class="distribution"></div></article>
+          <article class="surface"><h2>Análisis recientes</h2><div id="recent-analyses"></div></article>
+        </div>
+        <div class="tip-card"><span class="tile-icon mint"><svg><use href="#shield"/></svg></span><div><h3>Verifica por un canal independiente</h3><p>Busca tú mismo el número, la página o la aplicación oficial.</p></div><a href="#guias">Ver guías</a></div>
+      </section>
+
+      <section data-page="analizar" hidden>
+        <div class="page-heading"><div><h1>Analizador</h1><p>Revisa un mensaje o una captura antes de actuar.</p></div></div>
+        <div class="analysis-grid">
+          <article class="surface analysis-form">
+            <nav class="switcher" aria-label="Tipo de análisis">
+              <a href="#analizar/texto" data-kind="texto"><svg><use href="#message"/></svg>Mensaje</a>
+              <a href="#analizar/imagen" data-kind="imagen"><svg><use href="#image"/></svg>Imagen</a>
+            </nav>
+            <form id="text-form">
+              <label for="message">Mensaje que quieres analizar</label>
+              <textarea required id="message" rows="7" maxlength="5000" placeholder="Pega aquí el mensaje sospechoso…"></textarea>
+              <div class="field-meta"><span>Usa ejemplos ficticios durante la demostración.</span><span id="characters">0 / 5.000</span></div>
+              <button class="button" type="submit"><svg><use href="#scan"/></svg>Analizar mensaje</button>
+            </form>
+            <form id="image-form" hidden>
+              <label for="file-input">Captura o comprobante</label>
+              <label class="dropzone" id="dropzone" for="file-input">
+                <input id="file-input" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png">
+                <span class="tile-icon purple"><svg><use href="#upload"/></svg></span>
+                <strong>Selecciona o arrastra una imagen</strong><span>JPG o PNG · Hasta 4 MiB</span>
+              </label>
+              <div id="file-preview" class="file-preview" hidden><img id="preview-img" alt="Vista previa de la imagen"><div><strong id="file-name"></strong><button type="button" id="remove-file" class="text-button">Retirar imagen</button></div></div>
+              <button class="button" type="submit"><svg><use href="#scan"/></svg>Analizar imagen</button>
+            </form>
+            <p id="analysis-error" class="error" role="alert" hidden></p>
+            <p id="analysis-status" class="progress" role="status" hidden><span class="spinner"></span>Revisando el contenido…</p>
+          </article>
+          <aside class="analysis-aside">
+            <article class="surface sample-card"><span class="tile-icon purple"><svg><use href="#spark"/></svg></span><h2>Prueba con un ejemplo</h2><p>Usa los casos ficticios preparados para el MVP.</p><div id="sample-actions"></div></article>
+            <div class="privacy-note"><svg><use href="#lock"/></svg><p>Evita compartir contraseñas, códigos o datos financieros. En modo real, Gemini procesa el contenido para generar el resultado.</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section data-page="resultado" hidden>
+        <div class="page-heading"><div><h1>Resultado del análisis</h1><p>Revisa las señales y los pasos que puedes tomar.</p></div><a class="button secondary" href="#panel">Volver al panel</a></div>
+        <div id="result-content"></div>
+      </section>
+
+      <section data-page="asistente" hidden>
+        <div class="page-heading"><div><h1>Asistente</h1><p>Resuelve dudas sobre estafas y seguridad digital.</p></div></div>
+        <article class="surface chat">
+          <div class="chat-title"><span class="tile-icon purple"><svg><use href="#spark"/></svg></span><div><h2>Asistente PILAS</h2><span id="chat-mode">Consultas de prevención</span></div></div>
+          <div id="chat-log" class="chat-log" role="log" aria-label="Conversación" aria-live="polite"><p class="assistant-bubble">¿Qué te gustaría verificar? Elige una pregunta o escribe tu consulta.</p></div>
+          <div class="suggestions" id="suggestions"></div>
+          <form id="chat-form">
+            <label class="sr-only" for="chat-input">Tu consulta</label><textarea id="chat-input" maxlength="1500" rows="2" required placeholder="Escribe tu consulta…"></textarea><button class="button" type="submit">Enviar</button>
+          </form>
+          <p id="chat-error" class="error" role="alert" hidden></p>
+          <p id="chat-status" class="progress" role="status" hidden><span class="spinner"></span>Preparando la respuesta…</p>
+        </article>
+      </section>
+
+      <section data-page="guias" hidden>
+        <div class="page-heading"><div><h1>Centro de prevención</h1><p>Aprende a reconocer las señales de las estafas más comunes.</p></div></div>
+        <div id="guide-grid" class="guide-grid"></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

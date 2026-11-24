@@ -9,9 +9,10 @@ import httpx
 from dotenv import dotenv_values
 from fastapi import Depends, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
-from .demo import DemoAnalyzer
+from .demo import DEMO_IMAGE, DemoAnalyzer
 from .gemini import DEFAULT_MODEL, GEMINI_URL, GeminiAnalyzer
 from .inputs import ImageInput, read_image, read_text
 from .schemas import AnalysisError, AnalysisResult, ErrorResponse, Mode, TextInput
@@ -81,6 +82,10 @@ def create_app(*, gemini_transport: httpx.AsyncBaseTransport | None = None) -> F
         mode: Mode = request.app.state.mode
         return {"estado": "ok", "modo": mode}
 
+    @app.get("/api/demo/comprobante", response_class=FileResponse)
+    async def demo_receipt() -> FileResponse:
+        return FileResponse(DEMO_IMAGE, media_type="image/png")
+
     @app.post(
         "/api/analisis/texto",
         response_model=AnalysisResult,
@@ -116,6 +121,10 @@ def create_app(*, gemini_transport: httpx.AsyncBaseTransport | None = None) -> F
     )
     async def analyze_image(request: Request, image: Annotated[ImageInput, Depends(read_image)]) -> AnalysisResult:
         return await request.app.state.analyzer.analyze(image)
+
+    frontend = Path(__file__).resolve().parents[2] / "frontend"
+    if frontend.is_dir():
+        app.mount("/", StaticFiles(directory=frontend, html=True), name="frontend")
 
     return app
 
