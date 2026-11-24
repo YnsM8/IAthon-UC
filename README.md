@@ -31,6 +31,8 @@ La interfaz debe funcionar en celular, tableta y computadora. El riesgo se expre
 
 ## Arquitectura y contrato inicial propuestos
 
+La primera implementación del analizador está en [backend/](backend/README.md). La guía incluye instalación, configuración de Gemini y ejemplos para probar los endpoints desde frontend.
+
 El punto de partida es **HTML, CSS y JavaScript** para el frontend y **Python con FastAPI** para el backend. El navegador envía la solicitud a la API de PILAS. El backend valida la entrada, llama al proveedor de IA y devuelve un resultado estructurado. Para texto, el modelo revisará urgencia, suplantación, solicitudes de dinero o datos y señales en enlaces visibles. Para imágenes, un modelo multimodal leerá el contenido y revisará inconsistencias visibles, con OCR si se necesita.
 
 | Operación | Solicitud |
