@@ -104,16 +104,16 @@ function renderAnalyzer() {
   } else {
     for (const [label, value] of [["Premio falso", prize], ["Oferta laboral falsa", job]]) {
       samples.append(button(label, () => {
-        $("message").value = value;
+        $("message-input").value = value;
         updateCharacters();
-        $("message").focus();
+        $("message-input").focus();
       }));
     }
   }
 }
 
 function updateCharacters() {
-  $("characters").textContent = `${$("message").value.length.toLocaleString("es-PE")} / 5.000`;
+  $("characters").textContent = `${$("message-input").value.length.toLocaleString("es-PE")} / 5.000`;
 }
 
 function chooseFile(file) {
@@ -216,7 +216,7 @@ function renderResult() {
   const again = node("a", "Realizar otro análisis", "button");
   again.href = `#analizar/${result.tipo}`;
   again.addEventListener("click", () => {
-    $("message").value = "";
+    $("message-input").value = "";
     $("file-input").value = "";
     chooseFile(null);
     updateCharacters();
@@ -260,7 +260,7 @@ for (const [title, example, signals, action] of guides) {
   $("guide-grid").append(card);
 }
 
-$("message").addEventListener("input", updateCharacters);
+$("message-input").addEventListener("input", updateCharacters);
 $("file-input").addEventListener("change", event => chooseFile(event.target.files[0]));
 $("remove-file").addEventListener("click", () => { $("file-input").value = ""; chooseFile(null); });
 const dropzone = $("dropzone");
@@ -273,7 +273,7 @@ dropzone.addEventListener("drop", event => {
 });
 $("text-form").addEventListener("submit", event => {
   event.preventDefault();
-  const text = $("message").value.trim();
+  const text = $("message-input").value.trim();
   if (!text) return showError("analysis-error", "Pega un mensaje para analizarlo.");
   analyze("texto", json({ texto: text }));
 });
